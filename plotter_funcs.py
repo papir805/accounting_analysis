@@ -57,13 +57,12 @@ def distribution_plotter(df, by_label, target_label, bins, verbose=False, normal
     plt.legend()
     plt.xlabel(target_label)
     if normal==True:
-        plt.ylabel('Proportion')
+        plt.ylabel('Density')
         plt.title('Proportion of {} by {}'.format(target_label, by_label))
     else:
         plt.ylabel('Count')
         plt.title('Distribution of {} by {}'.format(target_label, by_label))
-    plt.tight_layout()
-    plt.show();
+    plt.tight_layout();
     
     
     
@@ -115,13 +114,12 @@ def distribution_plotter_fancy(df, by_label, target_label, bins, verbose=False, 
         plt.legend()
         plt.xlabel(target_label)
         if normal==True:
-            plt.ylabel('Proportion')
+            plt.ylabel('Density')
             plt.title('Proportion of {} by {}'.format(target_label, by_label))
         else:
             plt.ylabel('Count')
             plt.title('Distribution of {} by {}'.format(target_label, by_label))
-        plt.tight_layout()
-        plt.show();
+        plt.tight_layout();
         
         
     elif overlaid==False:
@@ -165,8 +163,7 @@ def group_scatter_plotter(x_label, y_label, grouped_object, group_label, figsize
     plt.xlabel(x_label, fontsize=figsize[0]*2)
     plt.ylabel(y_label, fontsize=figsize[1]*2)
     plt.title('{} and {} for {}'.format(x_label, y_label, group_label))
-    plt.grid()
-    plt.show();
+    plt.grid();
     
     
     
@@ -203,5 +200,4 @@ def group_scatter_plotter_fancy(x_label, y_label, grouped_object, group_label=''
             plt.title('{} and {} for all US Accountants'.format(x_label, y_label))
     plt.grid()    
     plt.xlabel(x_label, fontsize=figsize[0]*2)
-    plt.ylabel(y_label, fontsize=figsize[1]*2)
-    plt.show();
+    plt.ylabel(y_label, fontsize=figsize[1]*2);
