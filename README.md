@@ -5,7 +5,7 @@ Because my wife was preparing to enter into the field of accounting and I was lo
 
 ## Method:
 Using Python, I broke the process down into three Jupyter notebooks:
-1. Data cleaning
+1. Data cleaning [Click here to see](https://github.com/papir805/accounting_analysis/tree/main/cleaning)
 2. Exploratory Data Analysis
 3. Regression Analysis
 
