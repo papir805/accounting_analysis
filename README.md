@@ -11,18 +11,20 @@ Using Python, I broke the process down into three Jupyter notebooks:
 
 
 ### Part 1 - Data Cleaning:
-Using `Pandas`, `NumPy`, and `Matplotlib`, I performed the following tasks:
-1. Remove unnecessary data.
-2. Clean strings of unwanted characters.
-3. Recast columns to their appropriate types.
-4. Handle `Null` Values.
+Libraries used: `Pandas`, `NumPy`, and `Matplotlib` 
 
-#### Remove Unnecessary data that won't aid analysis:
+**Goals**:
+  1. Remove unnecessary data.
+  2. Clean strings of unwanted characters.
+  3. Recast columns to their appropriate types.
+  4. Handle `Null` Values.
+
+#### 1.1 Remove Unnecessary data that won't aid analysis:
  * Ex: removed the time at which someone responded to the survey.
  * Remove Non US Accountants.  The survey was global, however given that my wife and I live in the US, it didn't make sense to have accountants from other  countries in the analysis.
    * 87% of the survey were accountants in the US, leaving 1201 accountants in total for the analysis.
 
-#### Cleaning Strings:
+#### 1.2 Cleaning Strings:
  * "Current Salary + Bonus"
    * Values like "73k" needed to be changed to "73000"
    * Replace commas and dollar signs with empty strings
@@ -34,11 +36,13 @@ Using `Pandas`, `NumPy`, and `Matplotlib`, I performed the following tasks:
    * Standardized by distilling 2 repeated unique strings down to 1:
      * Ex: Prefer not to say or Other -> Undisclosed
 
- #### Converting columns to appropriate types 
- * Recast "Current Salary + Bonus" to `float`
- * "Years of Experience", etc. to `int`
+ #### 1.3 Converting columns to appropriate types 
+ * "Current Salary + Bonus" to `float`
+ * "Years of Experience" to `float`
+ * "Average Hours Per Week" to `float'
+ * "Years Public Before Exit" to `float`
  
- * Cleaning `Null` values
+ #### 1.4 Cleaning `Null` values
    * Gender: Replaced `Null` values with Undisclosed
    * Line of Service: Replaced `Null` values with Other
    * Current Industry: Replaced `Null` values with Other
@@ -47,3 +51,25 @@ Using `Pandas`, `NumPy`, and `Matplotlib`, I performed the following tasks:
    * Cost of living: Imputed `Null` Values with the mode.
 
 ### Part 2 - Exploratory Data Analysis
+Libraries used: `Pandas`, `NumPy`, `Matplotlib`, and `Seaborn`
+
+| Qualitative data  | Quantitative data        |
+| ----------------- | -----------------        |
+| Exit status       | Years Experience         |
+| Has CPA           | Current Salary + Bonus   |
+| Current Industry  | Years Public Before Exit |
+| Cost of Living    | Average Hours Per week   |
+| Gender            |                          |
+| Line of Service   |                          |
+
+**Goals**:
+  1. Understand the qualitative data.
+  2. Understand different segments of accountants.
+     * Segment by Gender
+     * Segment by Line of Service
+     * Segment by Industry
+     * Segment by Has CPA
+  4. Determine if those who have their CPA license earn more than those who don't.
+  5. Determine if accountants who first started at a public accounting firm, then left for private industry, earn more than those who went directly into private industry.
+  6. Understand accountants with extremely high salaries.
+  7. 
