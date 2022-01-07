@@ -1,6 +1,6 @@
 # **US Accounting Analysis** - An analysis on data from a Reddit r/accounting survey
 
-## Goal: Understand the typical accountant
+## Overall goal - To understand the typical accountant and the accounting field:
 Because my wife was preparing to enter into the field of accounting and I was looking to develop projects to demonstrate proficiency with data analysis, I combined the two ideas together to create this project.  Additionally, she had done her own research on the field, stating that accountants with their CPA license earn more, as do accountants who start at a public accounting firm, then transition into working as an accountant in industry at a private company.  I used this data to better understand if those statements are true, as well as what a typical accountant looks like.
 
 ## Method:
@@ -21,25 +21,26 @@ Libraries used: `Pandas`, `NumPy`, and `Matplotlib`
 
 #### 1.1 Remove Unnecessary data that won't aid analysis:
  * Ex: removed the time at which someone responded to the survey.
- * Remove Non US Accountants.  The survey was global, however given that my wife and I live in the US, it didn't make sense to have accountants from other  countries in the analysis.
-   * 87% of the survey were accountants in the US, leaving 1201 accountants in total for the analysis.
+ * Remove Non US Accountants.  
+   * The survey was global, however given that my wife and I live in the US, it didn't make sense to have accountants from other  countries in the analysis.
+     * 87% of the survey were accountants in the US, leaving 1201 accountants in total for the analysis.
 
 #### 1.2 Cleaning Strings:
  * "Current Salary + Bonus"
    * Values like "73k" needed to be changed to "73000"
    * Replace commas and dollar signs with empty strings
  * "Line of Service"
-   * Standardized entries by distilled 36 repeated unique strings down to just 9:
+   * Standardized entries by distilling 36 unique strings down to just 9:
      * Ex: Internal Audit, IT Audit -> Audit
      * Ex: Audit/Tax, Audit & tax, Tax and audit -> Tax and Audit
  * "Gender"
-   * Standardized by distilling 2 repeated unique strings down to 1:
+   * Standardized by distilling 2 unique strings down to 1:
      * Ex: Prefer not to say or Other -> Undisclosed
 
  #### 1.3 Converting columns to appropriate types 
  * "Current Salary + Bonus" to `float`
  * "Years of Experience" to `float`
- * "Average Hours Per Week" to `float'
+ * "Average Hours Per Week" to `float`
  * "Years Public Before Exit" to `float`
  
  #### 1.4 Cleaning `Null` values
