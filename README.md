@@ -1,4 +1,4 @@
-# accounting_analysis
+# *US Accounting Analysis*
 Analysis on data from Reddit r/accounting survey.
 
 Because my wife recently started as an accountant, I was curious if I could learn more about the field by analyzing some data.
