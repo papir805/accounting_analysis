@@ -21,3 +21,5 @@ Libraries used: `Pandas`, `NumPy`, `Matplotlib`, and `Seaborn`
   5. Determine if accountants who first started at a public accounting firm, then left for private industry, earn more than those who went directly into private industry.
   6. Understand accountants with extremely high salaries.
   7. 
+
+Readme in Progress
