@@ -1,6 +1,6 @@
 # **US Accounting Analysis** - An analysis on data from a Reddit r/accounting survey
 
-## Overall goal - To understand the typical accountant and the accounting field:
+## Goal - To understand the typical accountant and the accounting field:
 Because my wife was preparing to enter into the field of accounting and I was looking to develop projects to demonstrate proficiency with data analysis, I combined the two ideas together to create this project.  Additionally, she had done her own research on the field, stating that accountants with their CPA license earn more, as do accountants who start at a public accounting firm, then transition into working as an accountant in industry at a private company.  I used this data to better understand if those statements are true, as well as what a typical accountant looks like.
 
 ## Method:
