@@ -10,7 +10,7 @@ Important libraries used: `Pandas`, `NumPy`, `Matplotlib`, and `Seaborn`
 | Gender            |                          |
 | Line of Service   |                          |
 
-## How to use:
+## How to use this repository:
 [Click here](https://github.com/papir805/accounting_analysis/blob/main/exploratory_data_analysis/accounting_eda.ipynb) or [here](https://nbviewer.org/github/papir805/accounting_analysis/blob/main/exploratory_data_analysis/accounting_eda.ipynb) to view the Jupyter Notebook that has all the code used, as well as the outputs and visualizations I produced.
 
 ## Goals:
