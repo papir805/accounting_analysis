@@ -4,7 +4,7 @@ Libraries used: `Pandas`, `NumPy`, `Matplotlib`, `Seaborn`, `Scipy`, `Sklearn`, 
 **Goal**:
 To determine which variable(s) do the best job at predicting a US accountant's Current Salary + Bonus and use them to construct a model that's trained on training data.  This model should have good performance on metrics like Root Mean Squared Error (RMSE) or Pearson's Correlation Coefficient (r), when verified against testing data. 
 
-## How to use:
+## How to use this repository:
 [Click here](https://github.com/papir805/accounting_analysis/blob/main/regression_analysis/accounting_regression-for-github.ipynb) or [here](https://nbviewer.org/github/papir805/accounting_analysis/blob/main/regression_analysis/accounting_regression-for-github.ipynb) to see code I used to construct the regression models, as well as the thought process that went behind selecting what I considered to best the best variable(s) and model.
 
 ## Method:
