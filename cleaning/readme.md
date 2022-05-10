@@ -8,11 +8,11 @@ Libraries used: `Pandas`, `NumPy`, and `Matplotlib`
   4. Handle `Null` Values.
 
 ## How to use this repository:
-Click here: [before cleaning](https://github.com/papir805/accounting_analysis/blob/main/cleaning/accounting_original.csv) to see what the data was as it came from r/accounting.
+To see what the data was as it came from r/accounting: [before cleaning](https://github.com/papir805/accounting_analysis/blob/main/cleaning/accounting_original.csv)
 
-Click here: [after cleaning](https://github.com/papir805/accounting_analysis/blob/main/cleaning/us_accounting_clean.csv) to see what the data looked like after all the cleaning I performed.
+To see what the data looked like after all the cleaning I performed: [after cleaning](https://github.com/papir805/accounting_analysis/blob/main/cleaning/us_accounting_clean.csv)
 
-Click here: [Jupyter Notebook](https://nbviewer.org/github/papir805/accounting_analysis/blob/main/cleaning/accounting_cleaning.ipynb) to see the code I used to perform all the cleaning.
+To see the code I used to perform all the cleaning: [Jupyter Notebook](https://nbviewer.org/github/papir805/accounting_analysis/blob/main/cleaning/accounting_cleaning.ipynb) 
 
 ## Method:
 ### 1.1 Remove Unnecessary data that won't aid analysis:
