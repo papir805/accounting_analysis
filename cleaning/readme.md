@@ -15,13 +15,13 @@ To see what the data looked like after all the cleaning I performed: [after clea
 To see the code I used to perform all the cleaning: [Jupyter Notebook](https://nbviewer.org/github/papir805/accounting_analysis/blob/main/cleaning/accounting_cleaning.ipynb) 
 
 ## Method:
-### 1.1 Remove Unnecessary data that won't aid analysis:
+### 1. Remove Unnecessary data that won't aid analysis:
  * Ex: removed the time at which someone responded to the survey.
  * Remove Non US Accountants.  
    * The survey was global, however given that my wife and I live in the US, it didn't make sense to have accountants from other  countries in the analysis.
      * 87% of the survey were accountants in the US, leaving 1201 accountants in total for the analysis.
 
-### 1.2 Cleaning Strings:
+### 2. Cleaning Strings:
  * "Current Salary + Bonus"
    * Values like "73k" needed to be changed to "73000"
    * Replace commas and dollar signs with empty strings
@@ -33,13 +33,13 @@ To see the code I used to perform all the cleaning: [Jupyter Notebook](https://n
    * Standardized by distilling 2 unique strings down to 1:
      * Ex: Prefer not to say or Other -> Undisclosed
 
- ### 1.3 Converting columns to appropriate types 
+ ### 3. Converting columns to appropriate types 
  * "Current Salary + Bonus" to `float`
  * "Years of Experience" to `float`
  * "Average Hours Per Week" to `float`
  * "Years Public Before Exit" to `float`
  
- ### 1.4 Cleaning `Null` values
+ ### 4. Cleaning `Null` values
    * Gender: Replaced `Null` values with Undisclosed
    * Line of Service: Replaced `Null` values with Other
    * Current Industry: Replaced `Null` values with Other
