@@ -48,44 +48,11 @@ us_accounting.dtypes
 us_accounting.describe()
 
 # %%
-colors = ['teal', 'orchid']
+colors = ['tab:brown', 'tab:blue']
 
 fig, (ax1, ax2, ax3) = plt.subplots(3,1, figsize=(10,8))
 
-boxplot1 = us_accounting.boxplot(column=['Years Experience', 'Years Public Before Exit'], ax=ax1, patch_artist=True, return_type='dict', vert=False)
-ax1.set_xlabel('Years')
-ax1.set_yticks(ticks=[1,2], labels=['Total \nExperience', 'Public Firm \nExperience'])
-ax1.grid(axis='y')
-
-for patch, color in zip(boxplot1['boxes'], colors):
-    patch.set_facecolor(color)
-
-
-boxplot2 = us_accounting.boxplot(column='Average Hours Per Week', ax=ax2, patch_artist=True, return_type='dict', vert=False)
-ax2.set_xlabel('Average Hours Per Week')
-ax2.set_yticks([])
-
-for patch, color in zip(boxplot2['boxes'], colors):
-    patch.set_facecolor('yellow')
-
-boxplot3 = us_accounting.boxplot(column='Current Salary + Bonus', ax=ax3, patch_artist=True, return_type='dict', vert=False)
-ax3.set_xlabel('Current Salary + Bonus')
-ax3.set_yticks([])
-
-for patch, color in zip(boxplot3['boxes'], colors):
-    patch.set_facecolor('blue')
-    
-plt.tight_layout();
-
-# %%
-us_accounting.describe()
-
-# %%
-colors = ['tab:blue', 'tab:brown']
-
-fig, (ax1, ax2, ax3) = plt.subplots(3,1, figsize=(10,8))
-
-boxplot1 = us_accounting.boxplot(column=['Years Experience', 'Years Public Before Exit'], ax=ax1, patch_artist=True, return_type='dict', vert=False, showfliers=False, meanprops=dict(markerfacecolor='black', markeredgecolor='black'))
+boxplot1 = us_accounting.boxplot(column=['Years Public Before Exit', 'Years Experience'], ax=ax1, patch_artist=True, return_type='dict', vert=False, showfliers=False, meanprops=dict(markerfacecolor='black', markeredgecolor='black'))
 ax1.set_xlabel('Years Experience')
 ax1.set_yticks([])
 ax1.grid(axis='y')
@@ -95,7 +62,7 @@ for patch, color in zip(boxplot1['boxes'], colors):
 for median in boxplot1['medians']:
     median.set_color('red')
     
-ax1.legend(boxplot1['boxes'], ['Total', 'Public Firm'])
+ax1.legend(boxplot1['boxes'][::-1], ['Total', 'Public Firm'])
     
 
 boxplot2 = us_accounting.boxplot(column='Average Hours Per Week', ax=ax2, patch_artist=True, return_type='dict', vert=False, showfliers=False, meanprops=dict(markerfacecolor='black', markeredgecolor='black'))
@@ -128,7 +95,7 @@ plt.savefig("/users/rancher/Google Drive/Coding/website/github_pages/images/acco
 # * **Work an average of between 25 and 65 hours per week.**
 # * **Earn between 8,400 and 140,000 annually.**
 #
-# **The middle 50% of US Accountants:**
+# **The 50% of US Accountants in the middle:**
 # * **Have between 2 and  years experience.**
 # * **Have worked between 2 and 4 years in a public accounting firm before exiting.**
 # * **Work an Average of 40-50 hours per week.**
@@ -232,8 +199,7 @@ m_f_groups = males_and_females.groupby('Gender')
 us_accounting['Gender'].value_counts(normalize=True).plot.bar(edgecolor='black', color={'tab:orange':"Male", 'tab:blue':"Female", 'tab:green':"Undisclosed"})
 plt.ylabel('Proportion')
 plt.xticks(rotation=0)
-plt.title('Accountants by Gender')
-plt.savefig("/users/rancher/Google Drive/Coding/website/github_pages/images/accounting_analysis/reddit_accounting_analysis/accounting_proportions.png", bbox_inches='tight')
+plt.title('Accountants by Gender');
 
 # %% [markdown]
 # Because respondents with an Undisclosed `Gender` are only 3% of the dataset, I'm going to exclude them from any analysis I perform involving `Gender`.
@@ -249,32 +215,44 @@ male_median_salary = males['Current Salary + Bonus'].median()
 female_mean_salary = females['Current Salary + Bonus'].mean()
 male_mean_salary = males['Current Salary + Bonus'].mean()
 
-fig, (ax1, ax2) = plt.subplots(2,1, figsize=(10,10))
-ax1.bar(1, female_median_salary, label='Female', width=0.5, color='tab:blue', edgecolor='black')
-ax1.bar(1.5, male_median_salary, label='Male', width=0.5, color='tab:orange', edgecolor='black')
-ax1.bar(2.25, female_mean_salary, label='Female', width=0.5, color='tab:blue', edgecolor='black')
-ax1.bar(2.75, male_mean_salary, label='Male', width=0.5, color='tab:orange', edgecolor='black')
-ax1.set_xticks([1.25, 2.5])
-ax1.set_xticklabels(['Median Salary', 'Mean Salary'])
-ax1.set_yticks(np.arange(0, 100_001, 20_000))
-ax1.set_ylabel('Current Salary + Bonus')
+fig = plt.figure(figsize=(10,5))
+gs = GridSpec(1,4, figure=fig)
 
-boxplot = males_and_females.boxplot(column='Current Salary + Bonus', by='Gender', return_type = 'both', patch_artist=True, ax=ax2, vert=False, showmeans=True, meanprops=dict(markerfacecolor='yellow', markeredgecolor='yellow'))
-ax2.set_title(None)
-ax2.set_xlabel('Current Salary + Bonus')
+ax1 = fig.add_subplot(gs[0,:3])
+ax2 = fig.add_subplot(gs[0,3])
+
+# ax2.bar(1, female_median_salary, label='Female', width=0.5, color='tab:blue', edgecolor='black')
+# ax2.bar(1.5, male_median_salary, label='Male', width=0.5, color='tab:orange', edgecolor='black')
+# ax2.bar(2.25, female_mean_salary, label='Female', width=0.5, color='tab:blue', edgecolor='black')
+# ax2.bar(2.75, male_mean_salary, label='Male', width=0.5, color='tab:orange', edgecolor='black')
+# ax2.set_xticks([1.25, 2.5])
+# ax2.set_xticklabels(['Median \nSalary', 'Mean \nSalary'])
+# ax2.set_yticks(np.arange(0, 100_001, 20_000))
+# ax2.set_ylabel('Current Salary + Bonus ($)')
+
+boxplot = males_and_females.boxplot(column='Current Salary + Bonus', by='Gender', return_type = 'both', patch_artist=True, ax=ax1, vert=False, showmeans=True, meanprops=dict(markerfacecolor='yellow', markeredgecolor='yellow'))
+ax1.set_title(None)
+ax1.set_xlabel('Current Salary + Bonus ($)')
 for row_key, (ax, row) in boxplot.iteritems():
     for i,box in enumerate(row['boxes']):
         box.set_facecolor(gender_colors[i])
+        
+
+(us_accounting[us_accounting['Gender']!='Undisclosed']['Gender'].value_counts(normalize=True)*100).plot.bar(edgecolor='black', color={'tab:orange':"Male", 'tab:blue':"Female", 'tab:green':"Undisclosed"}, ax=ax2)
+ax2.set_ylabel('Proportion (%)')
+ax2.set_xticks(ticks=[0,1], labels=['Male','Female'], rotation=0)
+# ax2.set_title('Accountants by Gender')
 
 # The next three lines remove duplicate entries from the legend by getting the labels and typecasting them as a dict, where the labels are set as keys, which are forced to be unique.
 handles, labels = ax1.get_legend_handles_labels()
 by_label = dict(zip(labels, handles))
 
-ax1.set_title('Comparing Salary by Gender')
 ax1.legend(by_label.values(), by_label.keys())
 
-plt.suptitle(None)
+plt.suptitle('Comparing Salary by Gender')
+plt.tight_layout()
 
+plt.savefig("/users/rancher/Google Drive/Coding/website/github_pages/images/accounting_analysis/reddit_accounting_analysis/gender_boxplot_and_proportions.png", bbox_inches='tight')
 m_f_groups['Current Salary + Bonus'].describe()
 
 # %% [markdown]
@@ -913,20 +891,34 @@ yes_no_cpa_df = us_accounting[us_accounting['Has CPA'] != 'Finishing Exp Req']
 # #### Mean/Median Current Salary + Bonus
 
 # %%
-fig, ax = plt.subplots(2,1, figsize=(10,6))
-boxplot1 = yes_no_cpa_df.boxplot(column='Current Salary + Bonus', by='Has CPA', figsize=(5,10), ax=ax[0], patch_artist = True, return_type = 'both', vert=False)
-ax[0].set_title('With Outliers')
-ax[0].set_xlabel('Current Salary + Bonus ($)')
-ax[0].set_ylabel('Has CPA')
-ax[0].annotate('Raking it in!!', xy=(750_000, 1), xytext=(710_000, 0.55), color='red', arrowprops={'arrowstyle':'->', 
-                'connectionstyle':'arc3', 'color':'red'})
-ax[0].grid(axis='y')
+fig = plt.figure(figsize=(10,6))
+gs = GridSpec(2,3, figure=fig)
 
-boxplot2 = yes_no_cpa_df.boxplot(column='Current Salary + Bonus', by='Has CPA', figsize=(5,10), ax=ax[1], patch_artist = True, return_type = 'both', showfliers=False, vert=False)
-ax[1].set_title('WITHOUT Outliers')
-ax[1].set_xlabel('Current Salary + Bonus ($)')
-ax[1].set_ylabel('Has CPA')
-ax[1].grid(axis='y')
+ax1 = fig.add_subplot(gs[0,:])
+ax2 = fig.add_subplot(gs[1,:2])
+ax3 = fig.add_subplot(gs[1,2])
+
+mean_props = {'marker':'*', 'markeredgecolor':'black', 'markerfacecolor':'black'}
+
+
+boxplot1 = yes_no_cpa_df.boxplot(column='Current Salary + Bonus', by='Has CPA', figsize=(5,10), ax=ax1, patch_artist = True, return_type = 'both', vert=False, showmeans=True, meanprops=mean_props)
+ax1.set_title('With Outliers')
+ax1.set_xlabel('Current Salary + Bonus ($)')
+ax1.set_ylabel('Has CPA')
+ax1.annotate('Raking it in!!', xy=(750_000, 1), xytext=(710_000, 0.55), color='red', arrowprops={'arrowstyle':'->', 
+                'connectionstyle':'arc3', 'color':'red'})
+ax1.grid(axis='y')
+
+boxplot2 = yes_no_cpa_df.boxplot(column='Current Salary + Bonus', by='Has CPA', figsize=(5,10), ax=ax2, patch_artist = True, return_type = 'both', showfliers=False, vert=False, showmeans=True, meanprops=mean_props)
+ax2.set_title('WITHOUT Outliers')
+ax2.set_xlabel('Current Salary + Bonus ($)')
+ax2.set_ylabel('Has CPA')
+ax2.grid(axis='y')
+
+(us_accounting[us_accounting['Has CPA']!='Finishing Exp Req']['Has CPA'].value_counts(normalize=True) * 100).plot(kind='bar', color=has_cpa_colors, rot=0, ax=ax3, ec='black')
+ax3.set_title('Do you have your CPA?')
+ax3.set_ylabel('Proportion (%)')
+ax3.set_yticks(np.arange(0, 51, 10))
 
 plt.tight_layout()
 plt.suptitle(None)
@@ -1124,12 +1116,12 @@ gs = GridSpec(2,1, figure=fig)
 ax1 = fig.add_subplot(gs[0,0])
 ax2 = fig.add_subplot(gs[1,0])
 
-boxplot1 = df_exit_stats_of_interest.boxplot(column='Current Salary + Bonus', by='Public?', figsize=(8,8), ax=ax1, patch_artist=True, return_type='both', vert=False)
+boxplot1 = df_exit_stats_of_interest.boxplot(column='Current Salary + Bonus', by='Public?', figsize=(8,8), ax=ax1, patch_artist=True, return_type='both', vert=False, showmeans=True, meanprops=mean_props)
 ax1.set_title('With Outliers')
 ax1.set_ylabel('Exit Status')
 ax1.set_xlabel('Current Salary + Bonus ($)')
 
-boxplot2 = df_exit_stats_of_interest.boxplot(column='Current Salary + Bonus', by='Public?', figsize=(8,8), ax=ax2, patch_artist=True, return_type='both', showfliers=False, vert=False)
+boxplot2 = df_exit_stats_of_interest.boxplot(column='Current Salary + Bonus', by='Public?', figsize=(8,8), ax=ax2, patch_artist=True, return_type='both', showfliers=False, vert=False, showmeans=True, meanprops=mean_props)
 ax2.set_title('WITHOUT Outliers')
 ax2.set_ylabel('Exit Status')
 ax2.set_xlabel('Current Salary + Bonus ($)')
